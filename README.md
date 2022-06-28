@@ -1,4 +1,4 @@
-# template-dj-cel-red-beat
+# Template-dj-cel-red-beat
 This is a template project for Django-Celery-Redis-CeleryBeat
 
 ## Run Locally
