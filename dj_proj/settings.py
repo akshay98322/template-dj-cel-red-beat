@@ -1,8 +1,5 @@
 from pathlib import Path
-# celery imports
 from celery.schedules import crontab
-
-import core_app.tasks
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -123,8 +120,12 @@ CELERY_BROKER_URL = "redis://127.0.0.1:6379"
 CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379"
 
 CELERY_BEAT_SCHEDULE = {
-    "sample_task": {
+    "sample_task_schedule": {
         "task": "core_app.tasks.sample_task",
         "schedule": crontab(minute="*/1"),
+    },
+    "management_task_schedule": {
+        "task": "core_app.tasks.call_my_custom_command",
+        "schedule": crontab(hour="*/1"),
     },
 }
